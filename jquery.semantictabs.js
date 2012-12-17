@@ -42,7 +42,13 @@ Now works with arbitrary jQuery selectors, not just 'class' attribute.
 
 jQuery.fn.semantictabs = function(passedArgsObj) {
   /* defaults */
-  var defaults = {panel:'.panel', head:'h3', active:':first', activate:false};
+  var defaults = {
+    panel:'.panel', 
+    head:'h3', 
+    removeHead:false,
+    active:':first', 
+    activate:false
+  };
 
   /* override the defaults if necessary */
   var args = jQuery.extend(defaults,passedArgsObj);
@@ -69,7 +75,11 @@ jQuery.fn.semantictabs = function(passedArgsObj) {
   		  this.title = title;
   			container.find("ul.tabs").append('<li><a href="' + href + '">' + title + '</a></li>');
   		});
-  		container.find("ul li" + args.active).addClass("active");
+
+      // Remove titles if removeHead is TRUE
+      if(args.removeHead){ container.find(args.head).remove(); }
+  		
+      container.find("ul li" + args.active).addClass("active");
   		// Tab click behavior
   		container.find("ul.tabs li").click(function(e){
         e.preventDefault()

@@ -65,12 +65,14 @@ jQuery.fn.semantictabs = function(passedArgsObj) {
   		container.prepend("<ul class=\"tabs semtabs\"></ul>");
   		container.find(args.panel).each( function() {
   		  var title = jQuery(this).find(args.head).text();
+        var href = "#" + jQuery(this).attr("id");
   		  this.title = title;
-  			container.find("ul.tabs").append("<li><a href=\"javascript:void(0);\">"+title+"</a></li>");
+  			container.find("ul.tabs").append('<li><a href="' + href + '">' + title + '</a></li>');
   		});
   		container.find("ul li" + args.active).addClass("active");
   		// Tab click behavior
-  		container.find("ul.tabs li").click(function(){
+  		container.find("ul.tabs li").click(function(e){
+        e.preventDefault()
   			container.find(args.panel).hide();
   			container.find("ul.tabs li").removeClass("active");
   			container.find(args.panel + "[title='"+jQuery(this).text()+"']").show();

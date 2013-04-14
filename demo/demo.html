@@ -1,0 +1,63 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQUery SemanticTabs</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    
+    <h1>jquery-SemanticTabs</h1>
+    
+    <div id="mytabset">
+      <section class="panel" id="tab1">
+        <h3>Tab1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dignissim, nibh ut dictum luctus, urna quam condimentum mauris, at molestie est turpis ac leo. Nullam ac velit elit, ac viverra nulla. Mauris nisl ligula, varius a ultricies eget, blandit quis purus. Duis eget velit sed neque egestas consectetur. Nulla facilisi. Vivamus ut lorem rhoncus felis aliquam fermentum. Donec ac nisl purus, sit amet tincidunt eros. Pellentesque eu sollicitudin nulla. Phasellus sollicitudin porttitor ligula nec adipiscing.</p>
+      </section>
+      
+      <section class="panel" id="tab2">
+        <h3>Tab2</h3>
+        <ol>
+          <li><h4>Item 1</h4></li>
+          <li><h4>Item 2</h4></li>
+          <li><h4>Item 3</h4></li>
+          <li><h4>Item 4</h4></li>
+          <li><h4>Item 5</h4></li>
+        </ol>
+      </section>
+      
+      <section class="panel" id="tab3">
+        <h3>Tab3</h3>
+        <h4>Subtitle</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dignissim, nibh ut dictum luctus, urna quam condimentum mauris, at molestie est turpis ac leo. Nullam ac velit elit, ac viverra nulla. Mauris nisl ligula, varius a ultricies eget, blandit quis purus. Duis eget velit sed neque egestas consectetur. Nulla facilisi. Vivamus ut lorem rhoncus felis aliquam fermentum. Donec ac nisl purus, sit amet tincidunt eros. Pellentesque eu sollicitudin nulla. Phasellus sollicitudin porttitor ligula nec adipiscing.</p>
+      </section>
+    </div>
+    
+    <div class="activate">
+      <hr/>
+      <label for="mash">Mash Button to activate tab2:</label>
+      <input type="button" name="mash" value="Change Tab!" id="mash">
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
+    <script src="../source/jquery.semantictabs.js"></script>    
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function(){
+        
+        $("#mytabset").semantictabs({
+          panel:'.panel',                 //-- Selector of individual panel body.
+          head:'h3',                      //-- Selector of element containing panel head.
+          active:':first',                //-- Selector of panel to activate by default.
+          removeHead: true                //-- Remove headings from panel.
+        });
+        
+        $('#mash').click(function(){
+          $("#mytabset").semantictabs({ activate:1 });
+        });
+        
+      });
+    </script>
+  </body>
+</html>
